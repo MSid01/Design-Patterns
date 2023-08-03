@@ -32,12 +32,6 @@ public class Employee {
         this.address = address;
         this.leaveInfo = leaveInfo;
 
-//        this.addressStreet = addressStreet; // should made Address class
-//        this.addressCity = addressCity;
-//        this.addressCountry = addressCountry;
-//        this.leavesTaken = leavesTaken; //should be in different class
-//        this.leavesLeftPreviously = leavesLeftPreviously;
-//        this.yearsInOrg = leavesLeftPreviously.length;
     }
 
     public String getName() {
@@ -64,14 +58,4 @@ public class Employee {
         return leaveInfo;
     }
 
-    //too much hardcoding done in single function
-    /*
-    public String toHtml() {
-
-    }
-    //other method related to customer
-    */
-    public String formatEmployee(Formatter formatter){
-        return formatter.format(this);
-    }
 }

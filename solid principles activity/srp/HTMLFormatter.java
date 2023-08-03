@@ -1,9 +1,14 @@
 package solid.live.srp;
 
 public class HTMLFormatter implements Formatter{
+    Employee employee;
+
+    void Formatter(Employee employee){
+        this.employee = employee;
+    }
 
     @Override
-    public String format(Employee employee) {
+    public String format() {
         String str = "<div>" +
                 "<h1>Employee Info</h1>" +
                 "<div id='emp" + employee.getEmpId() + "'>" +
@@ -16,6 +21,5 @@ public class HTMLFormatter implements Formatter{
                 "</div>";
         return str;
     }
-
 
 }

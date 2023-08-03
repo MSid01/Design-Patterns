@@ -1,11 +1,7 @@
 package solid.live.dip;
 
 
-import net.iharder.Base64;
-
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.IOException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,14 +11,10 @@ import java.net.URL;
  * To change this template use File | Settings | File Templates.
  */
 public class EncodingModule {
-
-    Encode encodemodule;
-    EncodingModule(Encode encodeModule){
-        encodeModule = this.encodemodule;
-    }
-
-    void encode(){
-        encodemodule.encode();
+    public static void readEncodeWrite(Reader reader, Encoder encoder, Writer writer) throws IOException {
+        String inputData = reader.read();
+        String encodedData = encoder.encode(inputData);
+        writer.write(encodedData);
     }
 
     /*

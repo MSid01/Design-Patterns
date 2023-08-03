@@ -11,11 +11,10 @@ import java.io.IOException;
  */
 public class EncodingModuleClient {
     public static void main(String[] args) throws IOException {
-//        EncodingModule encodingModule  = new EncodingModule();
-//        encodingModule.encodeWithFiles();
-//        encodingModule.encodeBasedOnNetworkAndDatabase();
-        Encode file = new EncodeFile();
-        EncodingModule encodeModule = new EncodingModule(file);
-        file.encode();
+        Reader reader = new CustomFileReader("path_to_the_file/beforeEncryption.txt");
+        Encoder encoder = new Base64Encoder();
+        Writer writer = new DatabaseWriter();
+
+        EncodingModule.readEncodeWrite(reader,encoder,writer);
     }
 }

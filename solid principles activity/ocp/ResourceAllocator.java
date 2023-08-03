@@ -21,7 +21,5 @@ public class ResourceAllocator {
         resource.markSlotFree(resourceId);
     }
 
-
-
 }
 
