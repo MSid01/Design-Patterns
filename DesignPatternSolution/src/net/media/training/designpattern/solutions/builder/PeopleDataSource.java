@@ -1,5 +1,6 @@
 package net.media.training.designpattern.solutions.builder;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,13 +13,22 @@ import java.util.List;
 public class PeopleDataSource {
     public static String getPeopleXml(List<Person> persons) {
         StringBuilder finalXML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        finalXML.append("<People number=\"").append(persons.size()).append("\">");
+        XMLBuilder root = new XMLBuilder("People",new HashMap<>(){{
+            put("number", Integer.toString(persons.size()));
+        }});
         for (Person person : persons) {
-            finalXML.append("<Person id=\"").append(person.getId()).append("\" name=\"").append(person.getName()).append("\">")
-                    .append("<Address><City>").append(person.getCity()).append("</City><Country>").append(person.getCountry()).append("</Country></Address>")
-                    .append("</Person>");
+            String idStr = Integer.toString(person.getId());
+            String nameStr = person.getName();
+            XMLBuilder address = root.addElement("Person", new HashMap<>(){
+                {
+                    put("id",idStr);
+                    put("name",nameStr);}
+            }).addElement("Address");
+
+            address.addElement("City").addContent(person.getCity());
+            address.addElement("Country").addContent(person.getCountry());
         }
-        finalXML.append("</People>");
-        return finalXML.toString();
+        return root.buildXML();
     }
 }
+

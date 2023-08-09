@@ -29,6 +29,4 @@ public class PersonBuilder {
         return new Person(name, id, city,country);
     }
 
-
-
 }
